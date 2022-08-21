@@ -53,7 +53,7 @@ const sendAlert = (color, msg) => {
 
 // ----------- Chart js Stuff ----------- //
 const ctx = document.getElementById('myChart');
-const mikeybutholeChart = new Chart(ctx, {
+const chart = new Chart(ctx, {
     type: 'line',
     data: {
         datasets: [{
@@ -67,7 +67,7 @@ const mikeybutholeChart = new Chart(ctx, {
             title: { 
                 display: true,
                 align: 'start',
-                text: 'Mikey\'s Buthole',
+                text: 'Chart',
                 font: { size: 22 }
             }
         }
@@ -82,25 +82,25 @@ const startWebSocket = () => {
 
     socket.onopen = event => {
         updateButton(CONNECT_ID, 'disconnect');
-        sendAlert('green', '[connected]: Mikey buthole engaged');
+        sendAlert('green', '[connected]: engaged');
     };
 
     socket.onmessage = event => {
-        [time, waterInMyBalls] = event.data.split(':').map(x => parseInt(x));
+        [time, water] = event.data.split(':').map(x => parseInt(x));
 
         // If chartjs can't keep up you can improve performance
         // https://www.chartjs.org/docs/latest/general/performance.html
-        mikeybutholeChart.data.labels.push(time);
-        mikeybutholeChart.data.datasets[0].data.push(waterInMyBalls);
-        if (!isPaused) mikeybutholeChart.update();
+        chart.data.labels.push(time);
+        chart.data.datasets[0].data.push(water);
+        if (!isPaused) chart.update();
     };
 
     socket.onclose = event => {
-        updateButton(CONNECT_ID, 'connect deez nutz in your mouth');
+        updateButton(CONNECT_ID, 'Connect');
         if (event.wasClean) {
             sendAlert('blue', '[closed]: Connection closed cleanly');
         } else {
-            sendAlert('red', '[closed]: Connection trolling and ded');
+            sendAlert('red', '[closed]: Connection failed');
         }
     };
 
