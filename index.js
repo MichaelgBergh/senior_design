@@ -5,6 +5,54 @@ let socket;
 // ----------- HTML Stuff ----------- //
 let isPaused = false;
 
+
+document.addEventListener("DOMContentLoaded", () => {
+    const loginForm = document.querySelector("#login");
+    const skipLogin = document.querySelector("#canvasContainer");
+    const createAccountForm = document.querySelector("#createAccount");
+
+    document.querySelector("#linkCreateAccount").addEventListener("click", e => {
+        e.preventDefault();
+        loginForm.classList.add("form--hidden");
+        createAccountForm.classList.remove("form--hidden");
+    });
+    
+    document.querySelector("#skipLogin").addEventListener("click", e => {
+        e.preventDefault();
+        loginForm.classList.add("form--hidden");
+        createAccountForm.classList.add("form--hidden");
+        skipLogin.classList.remove("form--hidden");
+    });
+
+    document.querySelector("#linkLogin").addEventListener("click", e => {
+        e.preventDefault();
+        loginForm.classList.remove("form--hidden");
+        createAccountForm.classList.add("form--hidden");
+    });
+
+    loginForm.addEventListener("submit", e => {
+        e.preventDefault();
+
+        // Perform your AJAX/Fetch login
+
+        setFormMessage(loginForm, "error", "Invalid username/password combination");
+    });
+
+    document.querySelectorAll(".form__input").forEach(inputElement => {
+        inputElement.addEventListener("blur", e => {
+            if (e.target.id === "signupUsername" && e.target.value.length > 0 && e.target.value.length < 10) {
+                setInputError(inputElement, "Username must be at least 10 characters in length");
+            }
+        });
+
+        inputElement.addEventListener("input", e => {
+            clearInputError(inputElement);
+        });
+    });
+});
+
+
+
 const updateButton = (id, value, isLoading=false) => {
     button = document.getElementById(id);
     button.innerHTML = value;
@@ -76,6 +124,11 @@ const chart = new Chart(ctx, {
 
 
 
+
+
+
+
+
 // ----------- Socket Stuff ----------- //
 const startWebSocket = () => {
     socket = new WebSocket("ws://localhost:8080");
@@ -109,3 +162,4 @@ const startWebSocket = () => {
 
 updateButton(CONNECT_ID, 'connecting...', true);
 startWebSocket();
+
