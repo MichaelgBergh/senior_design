@@ -1,91 +1,182 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Senior Design AAA</title>
-        <link rel="stylesheet" href="style.css">
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    </head>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Senior Design AAA</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
 
-    <body>
-    <div>
-        <form class="form container" id="login">
-            <h1 class="form__title">Login</h1>
-            <div class="form__message form__message--error"></div>
-            <div class="form__input-group">
-                <input type="text" class="form__input" autofocus placeholder="Username or email">
-                <div class="form__input-error-message"></div>
-            </div>
-            <div class="form__input-group">
-                <input type="password" class="form__input" autofocus placeholder="Password">
-                <div class="form__input-error-message"></div>
-            </div>
-            <button class="form__button" type="submit">Continue</button>
-            <p class="form__text">
-                <a href="./" id="skipLogin" class="form__link">Skip Log In</a>
-            </p>
-            <p class="form__text">
-                <a class="form__link" href="./" id="linkCreateAccount">Don't have an account? Create account</a>
-            </p>
-            
-            
-        </form>
-        <form class="form form--hidden container" id="createAccount">
-            <h1 class="form__title">Create Account</h1>
-            <div class="form__message form__message--error"></div>
-            <div class="form__input-group">
-                <input type="text" id="signupUsername" class="form__input" autofocus placeholder="Username">
-                <div class="form__input-error-message"></div>
-            </div>
-            <div class="form__input-group">
-                <input type="text" class="form__input" autofocus placeholder="Email Address">
-                <div class="form__input-error-message"></div>
-            </div>
-            <div class="form__input-group">
-                <input type="password" class="form__input" autofocus placeholder="Password">
-                <div class="form__input-error-message"></div>
-            </div>
-            <div class="form__input-group">
-                <input type="password" class="form__input" autofocus placeholder="Confirm password">
-                <div class="form__input-error-message"></div>
-            </div>
-            <button class="form__button" type="submit">Continue</button>
-            <p class="form__text">
-                <a class="form__link" href="./" id="linkLogin">Already have an account? Sign in</a>
-            </p>
-        </form>
+  <body>
+
+    <div class = "topButtons">
+      <button class = "button" href="./" id="gotoLogin">Login/Create Account</button>
+      <button class = "button" href="./" id="gotoSettings">Settings</button>
     </div>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <div class = "form--hidden" id="canvasContainer">
-    <div>
-            <canvas id="myChart">
-            </canvas>
+
+    <div >
+      <form class="form container" id="login">
+        <h1 class="form__title">Login</h1>
+        <div class="form__message form__message--error"></div>
+        <div class="form__input-group">
+          <input type="text" class="form__input" autofocus placeholder="Username or email">
+          <div class="form__input-error-message"></div>
         </div>
+        <div class="form__input-group">
+          <input type="password" class="form__input" autofocus placeholder="Password">
+          <div class="form__input-error-message"></div>
+        </div>
+        <button class="form__button" type="submit">Continue</button>
+        <p class="form__text">
+          <a href="./" id="gotoGraph" class="form__link">Skip Log In</a>
+        </p>
+        <p class="form__text">
+          <a class="form__link" href="./" id="linkCreateAccount">Don't have an account? Create account</a>
+        </p>
+
+
+      </form>
+      <form class="form form--hidden container" id="createAccount">
+        <h1 class="form__title">Create Account</h1>
+        <div class="form__message form__message--error"></div>
+        <div class="form__input-group">
+          <input type="text" id="signupUsername" class="form__input" autofocus placeholder="Username">
+          <div class="form__input-error-message"></div>
+        </div>
+        <div class="form__input-group">
+          <input type="text" class="form__input" autofocus placeholder="Email Address">
+          <div class="form__input-error-message"></div>
+        </div>
+        <div class="form__input-group">
+          <input type="password" class="form__input" autofocus placeholder="Password">
+          <div class="form__input-error-message"></div>
+        </div>
+        <div class="form__input-group">
+          <input type="password" class="form__input" autofocus placeholder="Confirm password">
+          <div class="form__input-error-message"></div>
+        </div>
+        <button class="form__button" type="submit" id="continue">Continue</button>
+        <p class="form__text">
+          <a class="form__link" href="./" id="linkLogin">Already have an account? Sign in</a>
+        </p>
+      </form>
+    </div>
+
+
+
+    <div id="settings" class = "form--hidden settingsBorder">
+      <div class="container-xl px-4 mt-4">
+        <div class="row">
+          <div class="col-lg-8">
+            <!-- Email notifications preferences card-->
+            <div class="card card-header-actions mb-4 innerSettingsBorder">
+              <div class="card-header">
+                Email Notifications
+                <div class="form-check form-switch">
+                  <input class="form-check-input" id="flexSwitchCheckChecked" type="checkbox" checked="">
+                  <label class="form-check-label" for="flexSwitchCheckChecked"></label>
+                </div>
+              </div>
+              <div class="card-body">
+                <form>
+                  <!-- Form Group (default email)-->
+                  <div class="mb-3">
+                    <label class="small mb-1" for="inputNotificationEmail">Default notification email</label>
+                    <input class="form-control" id="inputNotificationEmail" type="email" value="name@example.com" >
+                  </div>
+                  <!-- Form Group (email updates checkboxes)-->
+                  <div class="mb-0">
+                    <label class="small mb-2">Choose which types of email updates you receive</label>
+                    <div class="form-check mb-2">
+                      <input class="form-check-input" id="option1email" type="checkbox" checked="">
+                      <label class="form-check-label" for="option1email">Option 1</label>
+                    </div>
+
+                    <div class="form-check mb-2">
+                      <input class="form-check-input" id="option2email" type="checkbox">
+                      <label class="form-check-label" for="option2email">Option 2</label>
+                    </div>
+
+
+
+                    <div class="form-check">
+                      <input class="form-check-input" id="checkSecurity" type="checkbox" checked="" disabled="">
+                      <label class="form-check-label" for="checkSecurity">Security alerts</label>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <!-- SMS push notifications card-->
+            <div class="card card-header-actions mb-4 innerSettingsBorder">
+              <div class="card-header">
+                Push Notifications
+                <div class="form-check form-switch">
+                  <input class="form-check-input" id="smsToggleSwitch" type="checkbox" checked="">
+                  <label class="form-check-label" for="smsToggleSwitch"></label>
+                </div>
+              </div>
+              <div class="card-body">
+                <form>
+                  <!-- Form Group (default SMS number)-->
+                  <div class="mb-3">
+                    <label class="small mb-1" for="inputNotificationSms">Default SMS number</label>
+                    <input class="form-control" id="inputNotificationSms" type="tel" value="123-456-7890">
+                  </div>
+                  <!-- Form Group (SMS updates checkboxes)-->
+                  <div class="mb-0">
+                    <label class="small mb-2">Choose which types of push notifications you receive</label>
+
+                    <div class="form-check mb-2">
+                      <input class="form-check-input" id="option1phone" type="checkbox" checked="">
+                      <label class="form-check-label" for="option1phone">Option 1</label>
+                    </div>
+
+                    <div class="form-check mb-2">
+                      <input class="form-check-input" id="option2phone" type="checkbox">
+                      <label class="form-check-label" for="option2phone">Option 2</label>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <button class="saveSettings">Save</button>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+      <div id="graphs">
+        <div class = "form--hidden" id="canvasContainer">
+          <canvas id="myChart" >
+          </canvas>
+
+        </div>
+
         <div id="buttons">
-            <button id="connect" class="has-loader" onclick="connect()">
-                Run
-            </button>
-            <button id="pause" onclick="pause()">
-                pause
-            </button>
+          <button id="connect" class="has-loader" onclick="connect()">
+            Run
+          </button>
+          <button id="pause" onclick="pause()">
+            pause
+          </button>
         </div>
+
         <div id="alerts">
         </div>
+
         <script src="index.js"></script>
-    </div>
-        
-        
-    </body>
-</html>
+      </div>
+      
+      
+      </div>
+
+      </body>
+    </html>
