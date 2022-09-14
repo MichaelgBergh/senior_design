@@ -1,7 +1,25 @@
+
 const CONNECT_ID = 'connect';
 const PAUSE_ID = 'pause';
 let socket;
 var userArray = [];
+const months = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December'];
+  
+
+
+const dataCopy = myChart.data.datasets[0].data;
 
 // ----------- HTML Stuff ----------- //
 let isPaused = false;
@@ -12,7 +30,7 @@ function setFormMessage(formElement, type, message) {
 
     messageElement.textContent = message;
     messageElement.classList.remove("form__message--success", "form__message--error");
-    messageElement.classList.add(`form__message--${type}`);
+    messageElement.classList.add('form__message--${type}');
 }
 
 function setInputError(inputElement, message) {
@@ -24,6 +42,7 @@ function clearInputError(inputElement) {
     inputElement.classList.remove("form__input--error");
     inputElement.parentElement.querySelector(".form__input-error-message").textContent = "";
 }
+
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -119,7 +138,9 @@ document.addEventListener("DOMContentLoaded", () => {
    //     localStorage.setItem("userArrayKey", userArray);
     //    var someVarName = localStorage.getItem("someVarKey");
 
-
+  // ----------- Chart js Stuff ----------- //
+const ctx = document.getElementById('myChart');
+const mychart = new Chart(ctx);
 
 const updateButton = (id, value, isLoading=false) => {
     button = document.getElementById(id);
@@ -167,28 +188,34 @@ const sendAlert = (color, msg) => {
 
 
 
-// ----------- Chart js Stuff ----------- //
-const ctx = document.getElementById('myChart');
-const chart = new Chart(ctx, {
-    type: 'line',
-    data: {
-        datasets: [{
-            borderColor: 'rgb(165, 82, 52)',
-        }]
-    },
-    options: {
-        animation: false,
-        plugins: {
-            legend: { display: false },
-            title: { 
-                display: true,
-                align: 'start',
-                text: 'Chart',
-                font: { size: 22 }
-            }
-        }
-    }
-});
+
+
+function updateGraphType() {
+ var chartType = document.getElementById("chartType").value;
+ 
+ myChart.config._config.type = chartType;
+ myChart.config.type = chartType;
+ console.log(myChart.config._config);
+ myChart.update();
+}
+
+
+
+function updateGraph() {  
+  var startingMonth = document.getElementById("startingMonth").value;
+  var endingMonth = document.getElementById("endingMonth").value;
+  var startingYear = parseInt(document.getElementById("startingYear").value);
+  var endingYear = parseInt(document.getElementById("endingYear").value);
+ 
+
+
+  
+  myChart.data.labels = months.slice(months.indexOf(startingMonth), months.indexOf(endingMonth) + 1);
+  
+  myChart.data.datasets[0].data = dataCopy.slice(months.indexOf(startingMonth), months.indexOf(endingMonth) + 1);
+
+  myChart.update();  
+}
 
 
 
@@ -230,4 +257,3 @@ const startWebSocket = () => {
 
 updateButton(CONNECT_ID, 'connecting...', true);
 startWebSocket();
-

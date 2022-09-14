@@ -1,3 +1,4 @@
+
 :root {
     --red: #ffc9c9;
     --green: #c2fdbc;
@@ -247,8 +248,8 @@ body {
   
 }
 .button {
-  font-size: 12px;
-  padding: 4px;
+  font-size: 18px;
+  padding: 10px;
   background-color: skyblue;
 }
 
@@ -327,6 +328,11 @@ body {
   font-size: 18px;
   padding: 8px;
   background-color: Green;
+}
+
+
+.biggerGraph {
+  width: 900px;
 }
 
 

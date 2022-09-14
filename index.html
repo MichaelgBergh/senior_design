@@ -143,40 +143,135 @@
             </div>
           </div>
           <button class="saveSettings">Save</button>
+          <button>Cancel</button>
         </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+    <div class = "form--hidden biggerGraph" id="graphs">
+      <div  id="canvasContainer">
+        <canvas id="myChart" >
+        </canvas>
+      </div>
+
+      Graph Type:
+      <select name = "chartType" id="chartType" onchange = "updateGraphType()">
+        <option value="line">Line</option>
+        <option value="bar">Bar</option>
+        <option value="pie">Pie</option>
+        <option value="radar">Radar</option>
+        <option value="doughnut">Doughnut</option>
+        <option value="polarArea">Polar Area</option>
+      </select>
+      <br>
+
+
+      Starting Month:
+      <select name = "startingMonth" id="startingMonth" onchange = "updateGraph()">
+        <option value="January">January</option>
+        <option value="February">February</option>
+        <option value="March">March</option>
+        <option value="April">April</option>
+        <option value="May">May</option>
+        <option value="June">June</option>
+        <option value="July">July</option>
+        <option value="August">August</option>
+        <option value="September">September</option>
+        <option value="October">October</option>
+        <option value="November">November</option>
+        <option value="December">December</option>
+      </select>
+      <br>
+      Ending Month:
+      <select name = "endingMonth" id="endingMonth" onchange = "updateGraph()">
+        <option value="December">December</option>
+        <option value="January">January</option>
+        <option value="February">February</option>
+        <option value="March">March</option>
+        <option value="April">April</option>
+        <option value="May">May</option>
+        <option value="June">June</option>
+        <option value="July">July</option>
+        <option value="August">August</option>
+        <option value="September">September</option>
+        <option value="October">October</option>
+        <option value="November">November</option>
+
+      </select>
+      <br>
+
+
+      Starting Year:
+      <input name = "startingYear" id="startingYear" type = "number" value="2022" onchange = "updateGraph()">
+      <br>
+      Ending Year:
+      <input name = "endingYear" id="endingYear" type = "number" value="2022" onchange = "updateGraph()">
+      <br>
+      <br>
+
+
+
+      <div id="buttons">
+        <button id="connect" class="has-loader" onclick="connect()">
+          Run WebSocket
+        </button>
+        <button id="pause" onclick="pause()">
+          Pause Websocket
+        </button>
       </div>
 
 
-
-
-
-
-
-
-      <div id="graphs">
-        <div class = "form--hidden" id="canvasContainer">
-          <canvas id="myChart" >
-          </canvas>
-
-        </div>
-
-        <div id="buttons">
-          <button id="connect" class="has-loader" onclick="connect()">
-            Run
-          </button>
-          <button id="pause" onclick="pause()">
-            pause
-          </button>
-        </div>
-
-        <div id="alerts">
-        </div>
-
-        <script src="index.js"></script>
-      </div>
-      
-      
+      <div id="alerts">
       </div>
 
-      </body>
-    </html>
+      <script src="index.js"></script>
+    </div>
+
+    <script>
+      const labels = [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December',
+      ];
+
+      const data = {
+        labels: labels,
+        datasets: [{
+          label: 'Water',
+          backgroundColor: 'royalblue',
+          borderColor: 'blue',
+          fill: true,
+          data: [18, 9, 15, 12, 20, 30, 40, 32, 52,55,45,59],
+        }]
+      };
+      const config = {
+        type: 'line',
+   
+        data: data,
+        options: {}
+      };
+    </script>
+
+    <script>
+      const myChart = new Chart(document.getElementById('myChart'),config);
+    </script>
+
+
+  </body>
+</html>
