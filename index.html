@@ -13,7 +13,10 @@
     <div class = "topButtons">
       <button class = "button" href="./" id="gotoLogin">Login/Create Account</button>
       <button class = "button" href="./" id="gotoSettings">Settings</button>
+      
     </div>
+    
+    
 
     <div >
       <form class="form container" id="login">
@@ -142,8 +145,8 @@
               </div>
             </div>
           </div>
-          <button class="saveSettings">Save</button>
-          <button>Cancel</button>
+          <button class="saveSettings" id="saveButton">Save</button>
+          <button id="cancelButton">Cancel</button>
         </div>
       </div>
     </div>
@@ -156,11 +159,47 @@
 
 
     <div class = "form--hidden biggerGraph" id="graphs">
-      <div  id="canvasContainer">
-        <canvas id="myChart" >
-        </canvas>
+    <div >
+      <button class = "graphButtons" href="./" id="dayGraph">Daily</button>
+      <button class = "graphButtons" href="./" id="monthGraph">Monthly</button>
+      <button class = "graphButtons" href="./" id="yearGraph">Yearly</button>
+      <button class = "graphButtons" href="./" id="customGraph">Custom Range</button>
       </div>
+      <div class = "form--hidden" id="dayContainer">
 
+        <canvas id="dayChart" ></canvas>
+        Pick a Day:
+        <input type="date" id="dayDate" name="dayDate" onchange="updateDayGraph()">
+
+      </div>
+      <div class = "form--hidden" id="monthContainer">
+        <canvas id="monthChart" ></canvas>
+        Pick a Month:
+        <input type="month" id="monthDate" name="monthDate" onchange="updateMonthGraph()">
+      </div>
+      
+      
+      
+      <div class = "form--hidden" id="yearContainer">
+        <canvas id="yearChart" >
+        </canvas>
+
+        Year:
+        <input name = "startingYear" id="yearDate" type = "number" value="2022" onchange = "updateGraph()">
+      </div>
+      
+            <div class = "form--hidden" id="customContainer">
+
+        <canvas id="customChart" ></canvas>
+        Starting Date: 
+        <input type="date" id="customDateStart" name="customDateStart" onchange="updateCustomGraph()">
+        <br>
+        Ending Date
+        <input type="date" id="customDateEnd" name="customDateEnd" onchange="updateCustomGraph()">
+        <br>
+
+      </div>
+<br>
       Graph Type:
       <select name = "chartType" id="chartType" onchange = "updateGraphType()">
         <option value="line">Line</option>
@@ -170,49 +209,6 @@
         <option value="doughnut">Doughnut</option>
         <option value="polarArea">Polar Area</option>
       </select>
-      <br>
-
-
-      Starting Month:
-      <select name = "startingMonth" id="startingMonth" onchange = "updateGraph()">
-        <option value="January">January</option>
-        <option value="February">February</option>
-        <option value="March">March</option>
-        <option value="April">April</option>
-        <option value="May">May</option>
-        <option value="June">June</option>
-        <option value="July">July</option>
-        <option value="August">August</option>
-        <option value="September">September</option>
-        <option value="October">October</option>
-        <option value="November">November</option>
-        <option value="December">December</option>
-      </select>
-      <br>
-      Ending Month:
-      <select name = "endingMonth" id="endingMonth" onchange = "updateGraph()">
-        <option value="December">December</option>
-        <option value="January">January</option>
-        <option value="February">February</option>
-        <option value="March">March</option>
-        <option value="April">April</option>
-        <option value="May">May</option>
-        <option value="June">June</option>
-        <option value="July">July</option>
-        <option value="August">August</option>
-        <option value="September">September</option>
-        <option value="October">October</option>
-        <option value="November">November</option>
-
-      </select>
-      <br>
-
-
-      Starting Year:
-      <input name = "startingYear" id="startingYear" type = "number" value="2022" onchange = "updateGraph()">
-      <br>
-      Ending Year:
-      <input name = "endingYear" id="endingYear" type = "number" value="2022" onchange = "updateGraph()">
       <br>
       <br>
 
@@ -249,27 +245,80 @@
         'November',
         'December',
       ];
+      
+            const days = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25,26, 27, 28, 29, 30, 31];
+            
+            const hours = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24];
+      
+      var dayDataArr = [18, 9, 15, 12, 20, 30, 40, 32, 52,55,45,59,18, 9, 15, 12, 20, 30, 40, 32, 52,55,45,59,44];
+      
+      var monthDataArr = [4, 2, 2, 3, 4, 5, 6, 6, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25,26, 27, 28, 29, 30, 31];
+      var yearDataArr = [2, 2, 3, 2, 3, 5, 2, 1, 4,2,5,6];
+      var customDataArr = [312, 132, 423, 231,421, 321, 432, 654, 123,654,312,132];
+      
 
-      const data = {
+      
+      const dayChart = new Chart(document.getElementById('dayChart'),{
+        type: 'line',
+        data: {
+        labels: hours,
+        datasets: [{
+          label: 'Water',
+          backgroundColor: 'royalblue',
+          borderColor: 'blue',
+          fill: true,
+          data: dayDataArr,
+        }]
+      },
+        options: {}
+      });
+
+
+      const monthChart = new Chart(document.getElementById('monthChart'),{
+        type: 'line',
+        data: {
+          labels: days,
+          datasets: [{
+            label: 'Water',
+            backgroundColor: 'royalblue',
+            borderColor: 'blue',
+            fill: true,
+            data: monthDataArr,
+          }]
+        },
+        options: {}
+      });
+
+      
+      const yearChart = new Chart(document.getElementById('yearChart'),{
+        type: 'line',
+        data: {
         labels: labels,
         datasets: [{
           label: 'Water',
           backgroundColor: 'royalblue',
           borderColor: 'blue',
           fill: true,
-          data: [18, 9, 15, 12, 20, 30, 40, 32, 52,55,45,59],
+          data: yearDataArr,
         }]
-      };
-      const config = {
-        type: 'line',
-   
-        data: data,
+      },
         options: {}
-      };
-    </script>
-
-    <script>
-      const myChart = new Chart(document.getElementById('myChart'),config);
+      });
+      
+      const customChart = new Chart(document.getElementById('customChart'),{
+        type: 'line',
+        data: {
+        labels: labels,
+        datasets: [{
+          label: 'Water',
+          backgroundColor: 'royalblue',
+          borderColor: 'blue',
+          fill: true,
+          data: customDataArr,
+        }]
+      },
+        options: {}
+      });
     </script>
 
 

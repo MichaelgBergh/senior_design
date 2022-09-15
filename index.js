@@ -19,7 +19,7 @@ const months = [
   
 
 
-const dataCopy = myChart.data.datasets[0].data;
+const dataCopy = dayChart.data.datasets[0].data;
 
 // ----------- HTML Stuff ----------- //
 let isPaused = false;
@@ -47,7 +47,11 @@ function clearInputError(inputElement) {
 
 document.addEventListener("DOMContentLoaded", () => {
     const loginForm = document.querySelector("#login");
-    const graph = document.querySelector("#graphs");
+    const graphs = document.querySelector("#graphs");
+    const dayGraph = document.querySelector("#dayContainer");
+    const monthGraph = document.querySelector("#monthContainer");
+    const yearGraph = document.querySelector("#yearContainer");
+    const customGraph = document.querySelector("#customContainer");
     const createAccountForm = document.querySelector("#createAccount");
     const settingsPage = document.querySelector("#settings");
 
@@ -62,27 +66,87 @@ document.addEventListener("DOMContentLoaded", () => {
         loginForm.classList.remove("form--hidden");
         createAccountForm.classList.add("form--hidden");
     });
+    
+    document.querySelector("#saveButton").addEventListener("click", e => {
+        e.preventDefault();
+        loginForm.classList.add("form--hidden");
+        createAccountForm.classList.add("form--hidden");
+        settingsPage.classList.add("form--hidden");
+        graphs.classList.remove("form--hidden");
+        dayGraph.classList.remove("form--hidden");
+    });
+    
+    document.querySelector("#cancelButton").addEventListener("click", e => {
+        e.preventDefault();
+        loginForm.classList.add("form--hidden");
+        createAccountForm.classList.add("form--hidden");
+        settingsPage.classList.add("form--hidden");
+        graphs.classList.remove("form--hidden");
+        dayGraph.classList.remove("form--hidden");
+    });
         
     document.querySelector("#gotoGraph").addEventListener("click", e => {
         e.preventDefault();
         loginForm.classList.add("form--hidden");
         createAccountForm.classList.add("form--hidden");
         settingsPage.classList.add("form--hidden");
-        graph.classList.remove("form--hidden");
+        graphs.classList.remove("form--hidden");
+        dayGraph.classList.remove("form--hidden");
+    });
+    
+    document.querySelector("#dayGraph").addEventListener("click", e => {
+        e.preventDefault();
+        dayGraph.classList.remove("form--hidden");
+        monthGraph.classList.add("form--hidden");
+        yearGraph.classList.add("form--hidden");
+        customGraph.classList.add("form--hidden");
+    });
+    
+    document.querySelector("#monthGraph").addEventListener("click", e => {
+        e.preventDefault();
+        dayGraph.classList.add("form--hidden");
+        monthGraph.classList.remove("form--hidden");
+        yearGraph.classList.add("form--hidden");
+        customGraph.classList.add("form--hidden");
+    });
+    
+    document.querySelector("#yearGraph").addEventListener("click", e => {
+        e.preventDefault();
+        dayGraph.classList.add("form--hidden");
+        monthGraph.classList.add("form--hidden");
+        yearGraph.classList.remove("form--hidden");
+        customGraph.classList.add("form--hidden");
+    });
+    
+    document.querySelector("#yearGraph").addEventListener("click", e => {
+        e.preventDefault();
+        dayGraph.classList.add("form--hidden");
+        monthGraph.classList.add("form--hidden");
+        yearGraph.classList.remove("form--hidden");
+        customGraph.classList.add("form--hidden");
+    });
+    
+    document.querySelector("#customGraph").addEventListener("click", e => {
+        e.preventDefault();
+        dayGraph.classList.add("form--hidden");
+        monthGraph.classList.add("form--hidden");
+        yearGraph.classList.add("form--hidden");
+        customGraph.classList.remove("form--hidden");
     });
     
     document.querySelector("#gotoLogin").addEventListener("click", e => {
         e.preventDefault();
         loginForm.classList.remove("form--hidden");
-        graph.classList.add("form--hidden");
+        dayGraph.classList.add("form--hidden");
         createAccountForm.classList.add("form--hidden");
         settingsPage.classList.add("form--hidden");
     });
     
     document.querySelector("#gotoSettings").addEventListener("click", e => {
         e.preventDefault();
-        graph.classList.add("form--hidden");
+        graphs.classList.add("form--hidden");
         loginForm.classList.add("form--hidden");
+        createAccountForm.classList.add("form--hidden");
         settingsPage.classList.remove("form--hidden");
     });
     
@@ -107,7 +171,7 @@ document.addEventListener("DOMContentLoaded", () => {
 				e.preventDefault();
         loginForm.classList.add("form--hidden");
         createAccountForm.classList.add("form--hidden");
-        skipLogin.classList.remove("form--hidden");
+        graphs.classList.remove("form--hidden");
     });
 
     loginForm.addEventListener("submit", e => {
@@ -139,8 +203,8 @@ document.addEventListener("DOMContentLoaded", () => {
     //    var someVarName = localStorage.getItem("someVarKey");
 
   // ----------- Chart js Stuff ----------- //
-const ctx = document.getElementById('myChart');
-const mychart = new Chart(ctx);
+//const ctx = document.getElementById('dayChart');
+//const dayChart = new Chart(ctx);
 
 const updateButton = (id, value, isLoading=false) => {
     button = document.getElementById(id);
@@ -193,13 +257,38 @@ const sendAlert = (color, msg) => {
 function updateGraphType() {
  var chartType = document.getElementById("chartType").value;
  
- myChart.config._config.type = chartType;
- myChart.config.type = chartType;
- console.log(myChart.config._config);
- myChart.update();
+ //dayChart.config._config.type = chartType;
+ dayChart.config.type = chartType;
+ monthChart.config.type = chartType;
+ yearChart.config.type = chartType;
+ customChart.config.type = chartType;
+ dayChart.update();
+ monthChart.update();
+ yearChart.update();
+ customChart.update();
 }
 
+function updateDayGraph() {
+ var day = document.getElementById("dayDate").value;
+ console.log(day);
+}
 
+function updateMonthGraph() {
+ var month = document.getElementById("monthDate").value;
+ console.log(month);
+}
+
+function updateYearGraph() {
+ var year = document.getElementById("yearDate").value;
+ console.log(year);
+}
+
+function updateCustomGraph() {
+ var start = document.getElementById("customDateStart").value;
+ var end = document.getElementById("customDateEnd").value;
+ console.log(start);
+ console.log(end);
+}
 
 function updateGraph() {  
   var startingMonth = document.getElementById("startingMonth").value;
@@ -208,14 +297,22 @@ function updateGraph() {
   var endingYear = parseInt(document.getElementById("endingYear").value);
  
 
-
+console.log(dayChart.data);
+  dayChart.data.labels = months.slice(months.indexOf(startingMonth), months.indexOf(endingMonth) + 1);
   
-  myChart.data.labels = months.slice(months.indexOf(startingMonth), months.indexOf(endingMonth) + 1);
-  
-  myChart.data.datasets[0].data = dataCopy.slice(months.indexOf(startingMonth), months.indexOf(endingMonth) + 1);
+  dayChart.data.datasets[0].data = dataCopy.slice(months.indexOf(startingMonth), months.indexOf(endingMonth) + 1);
 
-  myChart.update();  
+  dayChart.update();  
 }
+
+
+//Daily    shows up to 24 hours for a given day
+//Month    shows up to 30 day for a given month (Select 1 month, choose day range
+//Yearly   shows up to 12 months for a given year
+
+
+
+
 
 
 
