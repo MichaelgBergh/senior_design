@@ -19,7 +19,7 @@ const months = [
   
 
 
-const dataCopy = dayChart.data.datasets[0].data;
+//const dataCopy = dayChart.data.datasets[0].data;
 
 // ----------- HTML Stuff ----------- //
 let isPaused = false;
