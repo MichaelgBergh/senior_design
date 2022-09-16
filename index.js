@@ -118,11 +118,19 @@ document.addEventListener("DOMContentLoaded", () => {
         customGraph.classList.add("form--hidden");
     });
     
-    document.querySelector("#yearGraph").addEventListener("click", e => {
+    document.querySelector("#saveButton").addEventListener("click", e => {
         e.preventDefault();
-        dayGraph.classList.add("form--hidden");
+        dayGraph.classList.remove("form--hidden");
         monthGraph.classList.add("form--hidden");
-        yearGraph.classList.remove("form--hidden");
+        yearGraph.classList.add("form--hidden");
+        customGraph.classList.add("form--hidden");
+    });
+    
+    document.querySelector("#cancelButton").addEventListener("click", e => {
+        e.preventDefault();
+        dayGraph.classList.remove("form--hidden");
+        monthGraph.classList.add("form--hidden");
+        yearGraph.classList.add("form--hidden");
         customGraph.classList.add("form--hidden");
     });
     
