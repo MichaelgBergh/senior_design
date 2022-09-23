@@ -263,6 +263,57 @@
         'December',
       ];
       
+      const customLabels = [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December',
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December',
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December',
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December',
+      ];
+      
             const days = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25,26, 27, 28, 29, 30, 31];
             
             const hours = ['1am', '2am', '3am', '4am','5am', '6am', '7am', '8am','9am', '10am', '11am', '12pm','1pm', '2pm', '3pm', '4pm','5pm', '6pm', '7pm', '8pm', '9pm','10pm', '11pm', '12am'];
@@ -271,34 +322,33 @@
       
       var monthDataArr = [4, 2, 2, 3, 4, 5, 6, 6, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25,26, 27, 28, 29, 30, 31];
       var yearDataArr = [2, 2, 3, 2, 3, 5, 2, 1, 4,2,5,6];
-      var customDataArr = [312, 132, 423, 231,421, 321, 432, 654, 123,654,312,132];
+      var customDataArr = [312, 132, 423, 231,421, 321, 432, 654, 123,654,312,132, 132, 423, 231,421, 321, 432, 654, 123,654,312,132, 132, 423, 231,421, 321, 432, 654, 123,654,312,132, 132, 423, 231,421, 321, 432, 654, 123,654,312,132, 132, 423, 231,421, 321, 432, 654, 123,654,312,132, 132, 423, 231,421, 321, 432, 654, 123,654,312,132,312,132];
 
 
       function scroller(scroll, chart){
         if (scroll.deltaY > 0) {  //scroll right
-          if ( dayChart.config.options.scales.x.max >= hours.length - 1 ) {
-            dayChart.config.options.scales.x.min = hours.length - 6;
-            dayChart.config.options.scales.x.max = hours.length -1;
+          if ( customChart.config.options.scales.x.max >= customLabels.length - 1 ) {
+            customChart.config.options.scales.x.min = customLabels.length - 6;
+            customChart.config.options.scales.x.max = customLabels.length -1;
           }
           else {
-            dayChart.config.options.scales.x.min += 1;
-            dayChart.config.options.scales.x.max += 1;
+            customChart.config.options.scales.x.min += 1;
+            customChart.config.options.scales.x.max += 1;
           }
         }
         else if (scroll.deltaY < 0) {
-          if (dayChart.config.options.scales.x.min <= 0) {
-            dayChart.config.options.scales.x.min = 0;
-            dayChart.config.options.scales.x.max = 5;
+          if (customChart.config.options.scales.x.min <= 0) {
+            customChart.config.options.scales.x.min = 0;
+            customChart.config.options.scales.x.max = 5;
           }
           else
           {
-            dayChart.config.options.scales.x.min -= 1;
-            dayChart.config.options.scales.x.max -= 1;
+            customChart.config.options.scales.x.min -= 1;
+            customChart.config.options.scales.x.max -= 1;
           }
 
         }
-        dayChart.update();
-        console.log(dayChart.config.options.scales.x.max);
+        customChart.update();
       }
 
       
@@ -315,43 +365,10 @@
             data: dayDataArr,
           }]
         },
-        options: {
-          scales: {
-            x: {
-              display: true,
-              title: {
-                display: true,
-                text: 'Hour',
-                color: 'black',
-                font: {
-                  family: 'Comic Sans MS',
-                  size: 24
-                }
-              },
-              min: 0,
-              max: 5
-
-            },
-            y: {
-            display: true,
-              title: {
-                display: true,
-                text: 'Water (L)',
-                color: 'black',
-                font: {
-                  family: 'Comic Sans MS',
-                  size: 24
-                }
-              },
-              beginAtZero: true
-          }
-        }
-      }
+        options:{}
                                  });
 
-      dayChart.canvas.addEventListener('wheel', (e) => {
-      scroller(e, dayChart);
-      })
+
 
 
       const monthChart = new Chart(document.getElementById('monthChart'),{
@@ -450,7 +467,7 @@
       const customChart = new Chart(document.getElementById('customChart'),{
         type: 'line',
         data: {
-        labels: labels,
+        labels: customLabels,
         datasets: [{
           label: 'Water',
           backgroundColor: 'royalblue',
@@ -459,8 +476,45 @@
           data: customDataArr,
         }]
       },
-        options: {}
+        options: {
+          scales: {
+            x: {
+              display: true,
+              title: {
+                display: true,
+                text: 'Hour',
+                color: 'black',
+                font: {
+                  family: 'Comic Sans MS',
+                  size: 24
+                }
+              },
+              min: 0,
+              max: 5
+
+            },
+            y: {
+            display: true,
+              title: {
+                display: true,
+                text: 'Water (L)',
+                color: 'black',
+                font: {
+                  family: 'Comic Sans MS',
+                  size: 24
+                }
+              },
+              beginAtZero: true
+          }
+        }
+      }
       });
+      
+      customChart.canvas.addEventListener('wheel', (e) => {
+      scroller(e, customChart);
+      })
+      
+      
     </script>
 
 
