@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -5,8 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Senior Design AAA</title>
     <link rel="stylesheet" href="style.css">
+    
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js" integrity="sha512-UXumZrZNiOwnTcZSHLOfcTs0aos2MzBWHXOHOuB0J/R44QB0dwY5JgfbvljXcklVf65Gc4El6RjZ+lnwd2az2g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-zoom/1.2.1/chartjs-plugin-zoom.min.js" integrity="sha512-klQv6lz2YR+MecyFYMFRuU2eAl8IPRo6zHnsc9n142TJuJHS8CG0ix4Oq9na9ceeg1u5EkBfZsFcV3U7J51iew==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
   </head>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 
   <body>
 
@@ -18,7 +39,7 @@
     
     
 
-    <div >
+    <div class = "loginStyle">
       <form class="form container" id="login">
         <h1 class="form__title">Login</h1>
         <div class="form__message form__message--error"></div>
@@ -204,10 +225,6 @@
       <select name = "chartType" id="chartType" onchange = "updateGraphType()">
         <option value="line">Line</option>
         <option value="bar">Bar</option>
-        <option value="pie">Pie</option>
-        <option value="radar">Radar</option>
-        <option value="doughnut">Doughnut</option>
-        <option value="polarArea">Polar Area</option>
       </select>
       <br>
       <br>
@@ -248,30 +265,93 @@
       
             const days = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25,26, 27, 28, 29, 30, 31];
             
-            const hours = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24];
+            const hours = ['1am', '2am', '3am', '4am','5am', '6am', '7am', '8am','9am', '10am', '11am', '12pm','1pm', '2pm', '3pm', '4pm','5pm', '6pm', '7pm', '8pm', '9pm','10pm', '11pm', '12am'];
       
       var dayDataArr = [18, 9, 15, 12, 20, 30, 40, 32, 52,55,45,59,18, 9, 15, 12, 20, 30, 40, 32, 52,55,45,59,44];
       
       var monthDataArr = [4, 2, 2, 3, 4, 5, 6, 6, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25,26, 27, 28, 29, 30, 31];
       var yearDataArr = [2, 2, 3, 2, 3, 5, 2, 1, 4,2,5,6];
       var customDataArr = [312, 132, 423, 231,421, 321, 432, 654, 123,654,312,132];
-      
 
+
+      function scroller(scroll, chart){
+        if (scroll.deltaY > 0) {  //scroll right
+          if ( dayChart.config.options.scales.x.max >= hours.length - 1 ) {
+            dayChart.config.options.scales.x.min = hours.length - 6;
+            dayChart.config.options.scales.x.max = hours.length -1;
+          }
+          else {
+            dayChart.config.options.scales.x.min += 1;
+            dayChart.config.options.scales.x.max += 1;
+          }
+        }
+        else if (scroll.deltaY < 0) {
+          if (dayChart.config.options.scales.x.min <= 0) {
+            dayChart.config.options.scales.x.min = 0;
+            dayChart.config.options.scales.x.max = 5;
+          }
+          else
+          {
+            dayChart.config.options.scales.x.min -= 1;
+            dayChart.config.options.scales.x.max -= 1;
+          }
+
+        }
+        dayChart.update();
+        console.log(dayChart.config.options.scales.x.max);
+      }
+
+      
       
       const dayChart = new Chart(document.getElementById('dayChart'),{
         type: 'line',
         data: {
         labels: hours,
-        datasets: [{
-          label: 'Water',
-          backgroundColor: 'royalblue',
-          borderColor: 'blue',
-          fill: true,
-          data: dayDataArr,
-        }]
-      },
-        options: {}
-      });
+          datasets: [{
+            label: 'Water',
+            backgroundColor: 'royalblue',
+            borderColor: 'blue',
+            fill: true,
+            data: dayDataArr,
+          }]
+        },
+        options: {
+          scales: {
+            x: {
+              display: true,
+              title: {
+                display: true,
+                text: 'Hour',
+                color: 'black',
+                font: {
+                  family: 'Comic Sans MS',
+                  size: 24
+                }
+              },
+              min: 0,
+              max: 5
+
+            },
+            y: {
+            display: true,
+              title: {
+                display: true,
+                text: 'Water (L)',
+                color: 'black',
+                font: {
+                  family: 'Comic Sans MS',
+                  size: 24
+                }
+              },
+              beginAtZero: true
+          }
+        }
+      }
+                                 });
+
+      dayChart.canvas.addEventListener('wheel', (e) => {
+      scroller(e, dayChart);
+      })
 
 
       const monthChart = new Chart(document.getElementById('monthChart'),{
@@ -286,10 +366,42 @@
             data: monthDataArr,
           }]
         },
-        options: {}
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          },
+          plugins: {
+            zoom: {
+              limits: {
+                y: {
+                  min: 0,
+                  max: 50
+                }
+
+              },
+              zoom: {
+                wheel: {
+                  enabled: true
+                },
+                pinch: {
+                  enable: true
+                },
+                mode: 'xy',
+                overScaleMode: 'xy'
+              },
+              pan: {
+                enabled: true,
+                mode: 'xy',
+                overScaleMode: 'xy'
+              }
+            }
+          }
+        }
       });
 
-      
+
       const yearChart = new Chart(document.getElementById('yearChart'),{
         type: 'line',
         data: {
@@ -302,7 +414,37 @@
           data: yearDataArr,
         }]
       },
-        options: {}
+        options:{
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          },
+          plugins: {
+            zoom: {
+              limits: {
+                y: {
+                  min: 0,
+                  max: 10
+                }
+
+              },
+              zoom: {
+                wheel: {
+                  enabled: true
+                },
+                pinch: {
+                  enable: true
+                },
+                mode: 'xy',
+              },
+              pan: {
+                enabled: true,
+                mode: 'xy'
+              }
+            }
+          }
+        }
       });
       
       const customChart = new Chart(document.getElementById('customChart'),{

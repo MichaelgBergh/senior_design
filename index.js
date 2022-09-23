@@ -59,12 +59,25 @@ document.addEventListener("DOMContentLoaded", () => {
         e.preventDefault();
         loginForm.classList.add("form--hidden");
         createAccountForm.classList.remove("form--hidden");
+        settingsPage.classList.add("form--hidden");
+        graphs.classList.add("form--hidden");
+        dayGraph.classList.add("form--hidden");
+        monthGraph.classList.add("form--hidden");
+        yearGraph.classList.add("form--hidden");
+        customGraph.classList.add("form--hidden");
     });
 
     document.querySelector("#linkLogin").addEventListener("click", e => {
         e.preventDefault();
         loginForm.classList.remove("form--hidden");
         createAccountForm.classList.add("form--hidden");
+        settingsPage.classList.add("form--hidden");
+        graphs.classList.add("form--hidden");
+        dayGraph.classList.add("form--hidden");
+        monthGraph.classList.add("form--hidden");
+        yearGraph.classList.add("form--hidden");
+        customGraph.classList.add("form--hidden");
+        
     });
     
     document.querySelector("#saveButton").addEventListener("click", e => {
@@ -74,6 +87,9 @@ document.addEventListener("DOMContentLoaded", () => {
         settingsPage.classList.add("form--hidden");
         graphs.classList.remove("form--hidden");
         dayGraph.classList.remove("form--hidden");
+        monthGraph.classList.add("form--hidden");
+        yearGraph.classList.add("form--hidden");
+        customGraph.classList.add("form--hidden");
     });
     
     document.querySelector("#cancelButton").addEventListener("click", e => {
@@ -83,6 +99,9 @@ document.addEventListener("DOMContentLoaded", () => {
         settingsPage.classList.add("form--hidden");
         graphs.classList.remove("form--hidden");
         dayGraph.classList.remove("form--hidden");
+        monthGraph.classList.add("form--hidden");
+        yearGraph.classList.add("form--hidden");
+        customGraph.classList.add("form--hidden");
     });
         
     document.querySelector("#gotoGraph").addEventListener("click", e => {
@@ -92,10 +111,17 @@ document.addEventListener("DOMContentLoaded", () => {
         settingsPage.classList.add("form--hidden");
         graphs.classList.remove("form--hidden");
         dayGraph.classList.remove("form--hidden");
+        monthGraph.classList.add("form--hidden");
+        yearGraph.classList.add("form--hidden");
+        customGraph.classList.add("form--hidden");
     });
     
     document.querySelector("#dayGraph").addEventListener("click", e => {
         e.preventDefault();
+        loginForm.classList.add("form--hidden");
+        createAccountForm.classList.add("form--hidden");
+        settingsPage.classList.add("form--hidden");
+        graphs.classList.remove("form--hidden");
         dayGraph.classList.remove("form--hidden");
         monthGraph.classList.add("form--hidden");
         yearGraph.classList.add("form--hidden");
@@ -104,6 +130,10 @@ document.addEventListener("DOMContentLoaded", () => {
     
     document.querySelector("#monthGraph").addEventListener("click", e => {
         e.preventDefault();
+        loginForm.classList.add("form--hidden");
+        createAccountForm.classList.add("form--hidden");
+        settingsPage.classList.add("form--hidden");
+        graphs.classList.remove("form--hidden");
         dayGraph.classList.add("form--hidden");
         monthGraph.classList.remove("form--hidden");
         yearGraph.classList.add("form--hidden");
@@ -112,30 +142,23 @@ document.addEventListener("DOMContentLoaded", () => {
     
     document.querySelector("#yearGraph").addEventListener("click", e => {
         e.preventDefault();
+        loginForm.classList.add("form--hidden");
+        createAccountForm.classList.add("form--hidden");
+        settingsPage.classList.add("form--hidden");
+        graphs.classList.remove("form--hidden");
         dayGraph.classList.add("form--hidden");
         monthGraph.classList.add("form--hidden");
         yearGraph.classList.remove("form--hidden");
         customGraph.classList.add("form--hidden");
     });
-    
-    document.querySelector("#saveButton").addEventListener("click", e => {
-        e.preventDefault();
-        dayGraph.classList.remove("form--hidden");
-        monthGraph.classList.add("form--hidden");
-        yearGraph.classList.add("form--hidden");
-        customGraph.classList.add("form--hidden");
-    });
-    
-    document.querySelector("#cancelButton").addEventListener("click", e => {
-        e.preventDefault();
-        dayGraph.classList.remove("form--hidden");
-        monthGraph.classList.add("form--hidden");
-        yearGraph.classList.add("form--hidden");
-        customGraph.classList.add("form--hidden");
-    });
+
     
     document.querySelector("#customGraph").addEventListener("click", e => {
         e.preventDefault();
+        loginForm.classList.add("form--hidden");
+        createAccountForm.classList.add("form--hidden");
+        settingsPage.classList.add("form--hidden");
+        graphs.classList.remove("form--hidden");
         dayGraph.classList.add("form--hidden");
         monthGraph.classList.add("form--hidden");
         yearGraph.classList.add("form--hidden");
@@ -145,17 +168,25 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector("#gotoLogin").addEventListener("click", e => {
         e.preventDefault();
         loginForm.classList.remove("form--hidden");
-        dayGraph.classList.add("form--hidden");
         createAccountForm.classList.add("form--hidden");
         settingsPage.classList.add("form--hidden");
+        graphs.classList.add("form--hidden");
+        dayGraph.classList.add("form--hidden");
+        monthGraph.classList.add("form--hidden");
+        yearGraph.classList.add("form--hidden");
+        customGraph.classList.add("form--hidden");
     });
     
     document.querySelector("#gotoSettings").addEventListener("click", e => {
         e.preventDefault();
-        graphs.classList.add("form--hidden");
         loginForm.classList.add("form--hidden");
         createAccountForm.classList.add("form--hidden");
         settingsPage.classList.remove("form--hidden");
+        graphs.classList.add("form--hidden");
+        dayGraph.classList.add("form--hidden");
+        monthGraph.classList.add("form--hidden");
+        yearGraph.classList.add("form--hidden");
+        customGraph.classList.add("form--hidden");
     });
     
     document.querySelector("#continue").addEventListener("click", e => {
@@ -179,7 +210,12 @@ document.addEventListener("DOMContentLoaded", () => {
 				e.preventDefault();
         loginForm.classList.add("form--hidden");
         createAccountForm.classList.add("form--hidden");
+        settingsPage.classList.add("form--hidden");
         graphs.classList.remove("form--hidden");
+        dayGraph.classList.remove("form--hidden");
+        monthGraph.classList.add("form--hidden");
+        yearGraph.classList.add("form--hidden");
+        customGraph.classList.add("form--hidden");
     });
 
     loginForm.addEventListener("submit", e => {
