@@ -1,4 +1,3 @@
-
 const CONNECT_ID = 'connect';
 const PAUSE_ID = 'pause';
 let socket;
@@ -54,6 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const customGraph = document.querySelector("#customContainer");
     const createAccountForm = document.querySelector("#createAccount");
     const settingsPage = document.querySelector("#settings");
+    const dashboard = document.querySelector("#dashboard");
 
     document.querySelector("#linkCreateAccount").addEventListener("click", e => {
         e.preventDefault();
@@ -65,6 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
         monthGraph.classList.add("form--hidden");
         yearGraph.classList.add("form--hidden");
         customGraph.classList.add("form--hidden");
+        dashboard.classList.add("form--hidden");
     });
 
     document.querySelector("#linkLogin").addEventListener("click", e => {
@@ -77,6 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
         monthGraph.classList.add("form--hidden");
         yearGraph.classList.add("form--hidden");
         customGraph.classList.add("form--hidden");
+        dashboard.classList.add("form--hidden");
         
     });
     
@@ -90,6 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
         monthGraph.classList.add("form--hidden");
         yearGraph.classList.add("form--hidden");
         customGraph.classList.add("form--hidden");
+        dashboard.classList.add("form--hidden");
     });
     
     document.querySelector("#cancelButton").addEventListener("click", e => {
@@ -102,6 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
         monthGraph.classList.add("form--hidden");
         yearGraph.classList.add("form--hidden");
         customGraph.classList.add("form--hidden");
+        dashboard.classList.add("form--hidden");
     });
         
     document.querySelector("#gotoGraph").addEventListener("click", e => {
@@ -114,6 +118,7 @@ document.addEventListener("DOMContentLoaded", () => {
         monthGraph.classList.add("form--hidden");
         yearGraph.classList.add("form--hidden");
         customGraph.classList.add("form--hidden");
+        dashboard.classList.add("form--hidden");
     });
     
     document.querySelector("#dayGraph").addEventListener("click", e => {
@@ -126,6 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
         monthGraph.classList.add("form--hidden");
         yearGraph.classList.add("form--hidden");
         customGraph.classList.add("form--hidden");
+        dashboard.classList.add("form--hidden");
     });
     
     document.querySelector("#monthGraph").addEventListener("click", e => {
@@ -138,6 +144,7 @@ document.addEventListener("DOMContentLoaded", () => {
         monthGraph.classList.remove("form--hidden");
         yearGraph.classList.add("form--hidden");
         customGraph.classList.add("form--hidden");
+        dashboard.classList.add("form--hidden");
     });
     
     document.querySelector("#yearGraph").addEventListener("click", e => {
@@ -150,6 +157,7 @@ document.addEventListener("DOMContentLoaded", () => {
         monthGraph.classList.add("form--hidden");
         yearGraph.classList.remove("form--hidden");
         customGraph.classList.add("form--hidden");
+        dashboard.classList.add("form--hidden");
     });
 
     
@@ -163,9 +171,10 @@ document.addEventListener("DOMContentLoaded", () => {
         monthGraph.classList.add("form--hidden");
         yearGraph.classList.add("form--hidden");
         customGraph.classList.remove("form--hidden");
+        dashboard.classList.add("form--hidden");
     });
     
-    document.querySelector("#gotoLogin").addEventListener("click", e => {
+		document.querySelector("#gotoLogin").addEventListener("click", e => {
         e.preventDefault();
         loginForm.classList.remove("form--hidden");
         createAccountForm.classList.add("form--hidden");
@@ -175,6 +184,7 @@ document.addEventListener("DOMContentLoaded", () => {
         monthGraph.classList.add("form--hidden");
         yearGraph.classList.add("form--hidden");
         customGraph.classList.add("form--hidden");
+        dashboard.classList.add("form--hidden");
     });
     
     document.querySelector("#gotoSettings").addEventListener("click", e => {
@@ -187,7 +197,22 @@ document.addEventListener("DOMContentLoaded", () => {
         monthGraph.classList.add("form--hidden");
         yearGraph.classList.add("form--hidden");
         customGraph.classList.add("form--hidden");
+        dashboard.classList.add("form--hidden");
     });
+    
+    document.querySelector("#gotoDashboard").addEventListener("click", e => {
+        e.preventDefault();
+        loginForm.classList.add("form--hidden");
+        createAccountForm.classList.add("form--hidden");
+        settingsPage.classList.add("form--hidden");
+        graphs.classList.add("form--hidden");
+        dayGraph.classList.add("form--hidden");
+        monthGraph.classList.add("form--hidden");
+        yearGraph.classList.add("form--hidden");
+        customGraph.classList.add("form--hidden");
+        dashboard.classList.remove("form--hidden");
+    });
+    
     
     document.querySelector("#continue").addEventListener("click", e => {
         
@@ -216,6 +241,7 @@ document.addEventListener("DOMContentLoaded", () => {
         monthGraph.classList.add("form--hidden");
         yearGraph.classList.add("form--hidden");
         customGraph.classList.add("form--hidden");
+        dashboard.classList.add("form--hidden");
     });
 
     loginForm.addEventListener("submit", e => {
