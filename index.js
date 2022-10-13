@@ -39,6 +39,7 @@ let isPaused = false;
 function writeToDataStore() {
 
 var txtFile = new File([""],'dataStore.txt');
+txtFile.open('w');
   txtFile.writeln(document.getElementById('textStuff').value);
   txtFile.close();
 
