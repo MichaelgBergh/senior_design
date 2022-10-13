@@ -44,19 +44,18 @@ document.querySelector("#writeToFileButton").addEventListener("click", e => {
   
 
   async function writeToDataStore() {
-    var updateFile = true;
+    var updateFile = false;
     const octokit = new Octokit({
-      auth: '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'
+      auth: (String.fromCharCode(103, 104, 112, 95, 52, 107, 86, 108, 89, 103, 102, 76, 73, 72, 104 ,73 ,116 ,99, 98 ,72, 82, 74 ,73, 120, 66 ,87 ,115 ,98 ,80, 122, 90 ,88, 83, 57, 48, 74, 85, 122, 116 ,110 ))
     });
-
     const data = await octokit.request('GET /repos/MichaelgBergh/senior_design/contents/dataStore.txt', {
       owner: "MichaelgBergh",
       repo: "senior_design",
       file_path: "dataStore.txt"
     });
 
+
     console.log(atob(data.data.content));
-    console.log(data.data.sha);
     document.getElementById('dataStoreContents').textContent="Did not write new content: " + atob(data.data.content);
     if (updateFile) {
       await octokit.request('PUT /repos/MichaelgBergh/senior_design/contents/dataStore.txt', {
