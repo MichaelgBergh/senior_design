@@ -14,8 +14,48 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js" integrity="sha512-UXumZrZNiOwnTcZSHLOfcTs0aos2MzBWHXOHOuB0J/R44QB0dwY5JgfbvljXcklVf65Gc4El6RjZ+lnwd2az2g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-zoom/1.2.1/chartjs-plugin-zoom.min.js" integrity="sha512-klQv6lz2YR+MecyFYMFRuU2eAl8IPRo6zHnsc9n142TJuJHS8CG0ix4Oq9na9ceeg1u5EkBfZsFcV3U7J51iew==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+
+<!--     <script type="module">
+    var updateFile = false;
+      import { Octokit } from "https://cdn.skypack.dev/@octokit/core";
+      const octokit = new Octokit({
+        auth: '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'
+      });
     
-   
+      const data = await octokit.request('GET /repos/MichaelgBergh/senior_design/contents/dataStore.txt', {
+        owner: "MichaelgBergh",
+        repo: "senior_design",
+        file_path: "dataStore.txt"
+      });
+    
+      console.log(atob(data.data.content));
+      console.log(data.data.sha);
+      if (updateFile) {
+        await octokit.request('PUT /repos/MichaelgBergh/senior_design/contents/dataStore.txt', {
+          owner: 'MichaelgBergh',
+          repo: 'senior_design',
+          path: 'dataStore.txt',
+          message: 'a new commit message',
+          committer: {
+            name: 'MichaelgBergh',
+            email: 'michaelgbergh@gmail.com'
+          },
+          content: btoa(atob(data.data.content) + " and more"),
+          sha: data.data.sha
+        })
+    
+    
+      }
+    
+    
+    
+    
+    
+    
+    
+    </script> -->
     
   </head>
   
@@ -155,9 +195,10 @@
     <div class="home-section" id="dashboard">
       <div class="text ">Dashboard (Home Screen)</div>
       <input type = "text" id = "textStuff">
-      <button onclick = "writeToDataStore()">
+      <button id ="writeToFileButton">
       write to file
       </button>
+      <pre id="dataStoreContents"></pre>
   </div>
   
 

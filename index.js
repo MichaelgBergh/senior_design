@@ -1,3 +1,4 @@
+import { Octokit } from "https://cdn.skypack.dev/@octokit/core";
 const CONNECT_ID = 'connect';
 const PAUSE_ID = 'pause';
 let socket;
@@ -28,24 +29,55 @@ var dataStore ='';
              }
              
              fr.readAsText(this.files[0]);
-             console.log(dataStore);
-         })
+      console.log(dataStore);
+    })
 
 //const dataCopy = dayChart.data.datasets[0].data;
 
 // ----------- HTML Stuff ----------- //
 let isPaused = false;
 
-function writeToDataStore() {
 
-var txtFile = new File([""],'dataStore.txt');
-txtFile.open('w');
-  txtFile.writeln(document.getElementById('textStuff').value);
-  txtFile.close();
+document.querySelector("#writeToFileButton").addEventListener("click", e => {
+  console.log(document.getElementById('textStuff').value);
+  writeToDataStore();
+  
 
-console.log(document.getElementById('textStuff').value);
+  async function writeToDataStore() {
+    var updateFile = true;
+    const octokit = new Octokit({
+      auth: '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'
+    });
 
-}
+    const data = await octokit.request('GET /repos/MichaelgBergh/senior_design/contents/dataStore.txt', {
+      owner: "MichaelgBergh",
+      repo: "senior_design",
+      file_path: "dataStore.txt"
+    });
+
+    console.log(atob(data.data.content));
+    console.log(data.data.sha);
+    document.getElementById('dataStoreContents').textContent="Did not write new content: " + atob(data.data.content);
+    if (updateFile) {
+      await octokit.request('PUT /repos/MichaelgBergh/senior_design/contents/dataStore.txt', {
+        owner: 'MichaelgBergh',
+        repo: 'senior_design',
+        path: 'dataStore.txt',
+        message: 'a new commit message',
+        committer: {
+          name: 'MichaelgBergh',
+          email: 'michaelgbergh@gmail.com'
+        },
+        content: btoa(atob(data.data.content) + " " + document.getElementById('textStuff').value),
+        sha: data.data.sha
+      })
+      document.getElementById('dataStoreContents').textContent="Wrote new content: " +atob(data.data.content);
+
+
+    } 
+  }
+});
+
 
 
 function setFormMessage(formElement, type, message) {
@@ -301,7 +333,7 @@ document.addEventListener("DOMContentLoaded", () => {
 //const dayChart = new Chart(ctx);
 
 const updateButton = (id, value, isLoading=false) => {
-    button = document.getElementById(id);
+    var button = document.getElementById(id);
     button.innerHTML = value;
     if (isLoading) button.disabled = true;
     else button.disabled = false;
