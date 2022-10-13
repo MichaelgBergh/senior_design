@@ -15,7 +15,7 @@
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-zoom/1.2.1/chartjs-plugin-zoom.min.js" integrity="sha512-klQv6lz2YR+MecyFYMFRuU2eAl8IPRo6zHnsc9n142TJuJHS8CG0ix4Oq9na9ceeg1u5EkBfZsFcV3U7J51iew==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     
-    <script type="module" src="index.js"></script>
+   
     
   </head>
   
@@ -24,21 +24,7 @@
     <br>
    
     <pre id="output"></pre>
-      
-    <script type="text/javascript">
 
-        // document.getElementById('inputfile')
-        //     .addEventListener('change', function() {
-              
-        //     var fr=new FileReader();
-        //     fr.onload=function(){
-        //         document.getElementById('output')
-        //                 .textContent=fr.result;
-        //     }
-              
-        //     fr.readAsText(this.files[0]);
-        // })
-    </script>
   
   
 <!--   
@@ -168,6 +154,10 @@
   
     <div class="home-section" id="dashboard">
       <div class="text ">Dashboard (Home Screen)</div>
+      <input type = "text" id = "textStuff">
+      <button onclick = "writeToDataStore()">
+      write to file
+      </button>
   </div>
   
 

@@ -16,20 +16,35 @@ const months = [
   'November',
   'December'];
   
-  const fs = require('fs');
-  fs.readFile('dataStore.txt','utf8', (err, data) => {
-    if (err) {
-      console.log(err);
-      return;
-      
-    }
-    console.log(data);
-  })
+var dataStore ='';
+    document.getElementById('inputfile')
+             .addEventListener('change', function() {
+              
+             var fr=new FileReader();
+             fr.onload=function(){
+                 document.getElementById('output')
+                         .textContent=fr.result;
+                          dataStore = fr.result;
+             }
+             
+             fr.readAsText(this.files[0]);
+             console.log(dataStore);
+         })
 
 //const dataCopy = dayChart.data.datasets[0].data;
 
 // ----------- HTML Stuff ----------- //
 let isPaused = false;
+
+function writeToDataStore() {
+
+var txtFile = new File([""],'dataStore.txt');
+  txtFile.writeln(document.getElementById('textStuff').value);
+  txtFile.close();
+
+console.log(document.getElementById('textStuff').value);
+
+}
 
 
 function setFormMessage(formElement, type, message) {
