@@ -16,7 +16,15 @@ const months = [
   'November',
   'December'];
   
-
+  const fs = require('fs');
+  fs.readFile('dataStore.txt','utf8', (err, data) => {
+    if (err) {
+      console.log(err);
+      return;
+      
+    }
+    console.log(data);
+  })
 
 //const dataCopy = dayChart.data.datasets[0].data;
 
