@@ -1,4 +1,1 @@
-dog
-water
-cat
-pizza
+my updated file contents
