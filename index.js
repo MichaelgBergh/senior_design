@@ -38,7 +38,7 @@ var dataStore ='';
 let isPaused = false;
 
 
-document.querySelector("#writeToFileButton").addEventListener("click", e => {
+/* document.querySelector("#writeToFileButton").addEventListener("click", e => {
   console.log(document.getElementById('textStuff').value);
   writeToDataStore();
   
@@ -75,7 +75,7 @@ document.querySelector("#writeToFileButton").addEventListener("click", e => {
 
     } 
   }
-});
+}); */
 
 
 
