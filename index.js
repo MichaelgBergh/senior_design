@@ -120,6 +120,19 @@ document.addEventListener("DOMContentLoaded", () => {
         dashboard.classList.add("form--hidden");
     });
     
+    document.querySelector("#graphImage").addEventListener("click", e => {
+        e.preventDefault();
+        loginForm.classList.add("form--hidden");
+        createAccountForm.classList.add("form--hidden");
+        settingsPage.classList.add("form--hidden");
+        graphs.classList.remove("form--hidden");
+        dayGraph.classList.remove("form--hidden");
+        monthGraph.classList.add("form--hidden");
+        yearGraph.classList.add("form--hidden");
+        customGraph.classList.add("form--hidden");
+        dashboard.classList.add("form--hidden");
+    });
+    
     document.querySelector("#dayGraph").addEventListener("click", e => {
         e.preventDefault();
         loginForm.classList.add("form--hidden");
