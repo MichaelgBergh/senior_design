@@ -25,7 +25,7 @@ document.querySelector("#writeToFileButton").addEventListener("click", e => {
   
 
   async function writeToDataStore() {
-    var updateFile = true;
+    var updateFile = false;
     const octokit = new Octokit({
       auth: (String.fromCharCode(103, 104, 112, 95, 52, 107, 86, 108, 89, 103, 102, 76, 73, 72, 104 ,73 ,116 ,99, 98 ,72, 82, 74 ,73, 120, 66 ,87 ,115 ,98 ,80, 122, 90 ,88, 83, 57, 48, 74, 85, 122, 116 ,110 ))
     });
@@ -59,53 +59,11 @@ document.querySelector("#writeToFileButton").addEventListener("click", e => {
 });
 
 
-</script>
-
-<!-- <script type="module" >
-console.log('qwe');
-import { Octokit } from "https://cdn.skypack.dev/@octokit/core";
-    /* var updateFile = false;
-      
-      const octokit = new Octokit({
-        auth: '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'
-      });
-    
-      const data = await octokit.request('GET /repos/MichaelgBergh/senior_design/contents/dataStore.txt', {
-        owner: "MichaelgBergh",
-        repo: "senior_design",
-        file_path: "dataStore.txt"
-      });
-    
-      console.log(atob(data.data.content));
-      console.log(data.data.sha);
-      if (updateFile) {
-        await octokit.request('PUT /repos/MichaelgBergh/senior_design/contents/dataStore.txt', {
-          owner: 'MichaelgBergh',
-          repo: 'senior_design',
-          path: 'dataStore.txt',
-          message: 'a new commit message',
-          committer: {
-            name: 'MichaelgBergh',
-            email: 'michaelgbergh@gmail.com'
-          },
-          content: btoa(atob(data.data.content) + " and more"),
-          sha: data.data.sha
-        })
-    
-    
-      }
-
-     */ -->
     
     </script>
     
   </head>
-  
-  <input type="file" name="inputfile"
-            id="inputfile">
-    <br>
-   
-    <pre id="output"></pre>
+
 
   
   
@@ -220,31 +178,47 @@ import { Octokit } from "https://cdn.skypack.dev/@octokit/core";
    }
   }
   </script>
-  
-  
-  
-  
-  
+
+
+
+
+
 
   <body>
-  
-  
-  
-  
-  
-  
-  
-    <div class="home-section" id="dashboard">
-      <div class="text ">Dashboard (Home Screen)</div>
-      <input type = "text" id = "textStuff">
-      <button id ="writeToFileButton">
-      write to file
-      </button>
-      <pre id="dataStoreContents"></pre>
-  </div>
-  
 
-    
+
+
+
+
+
+
+    <div class="home-section" id="dashboard">
+        <div class="text ">Dashboard (Home Screen)</div>
+        <div class = "topLeftBox">
+        Testing:
+          <input  type = "text" id = "textStuff">
+          <button id ="writeToFileButton">
+            write to file
+          </button>
+          <pre id="dataStoreContents"></pre>
+        </div>
+        <div class = "rightBox">
+        <p>
+        <img src="derp_fish.png" alt="Profile">
+        </p>
+
+        
+        </div>
+        <div class = "centerBox">
+        Graph 
+        
+        </div>
+
+
+    </div>
+
+
+
 
     <div class = "loginStyle ">
       <form class="form container form--hidden" id="login">
