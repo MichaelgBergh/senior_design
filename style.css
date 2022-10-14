@@ -623,14 +623,16 @@ position: relative;
 width: 5%;
 padding-left: 1%;
 top: -10%;
-left: 70%;
+left: 85%;
 padding-top: 2%;
-padding-bottom: 20%;
+/* padding-bottom: 20%; */
 /* background: lightblue; */
 color: black;
 }
 .smallFish {
-width: 100%;
+border: 1px solid #ddd;
+border-radius: 4px;
+width: 150%;
 border-radius: 8px;
 }
 .smallFish:hover {
@@ -639,7 +641,7 @@ box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
 
 .centerBox {
 position: relative;
-top: -25%;
+top: -5%;
 width: 65%;
 padding-left: 2%;
 padding-top: 2%;
