@@ -205,14 +205,14 @@ document.querySelector("#writeToFileButton").addEventListener("click", e => {
         <div class = "rightBox">
         <p>
         Profile
-        <img class = "smallFish" src="derp_fish.png" alt="Profile">
+        <img id = "fishProfile" class = "smallFish" src="derp_fish.png" alt="Profile">
         </p>
 
         
         </div>
-        <div class = "centerBox">
+        <div id = "dashboardGraph" class = "centerBox">
         Graph 
-        
+        <img id = "graphImage"  src="graph.png" alt="graph">
         </div>
 
 
@@ -235,7 +235,7 @@ document.querySelector("#writeToFileButton").addEventListener("click", e => {
         </div>
         <button class="form__button" type="submit">Continue</button>
         <p class="form__text">
-          <a href="./"  class="form__link">Skip Log In</a>
+          <a href="./" id="skipLogin" class="form__link">Skip Log In</a>
         </p>
         <p class="form__text">
           <a class="form__link" href="./" id="linkCreateAccount">Don't have an account? Create account</a>

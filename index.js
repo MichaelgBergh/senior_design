@@ -86,12 +86,12 @@ document.addEventListener("DOMContentLoaded", () => {
         loginForm.classList.add("form--hidden");
         createAccountForm.classList.add("form--hidden");
         settingsPage.classList.add("form--hidden");
-        graphs.classList.remove("form--hidden");
-        dayGraph.classList.remove("form--hidden");
+        graphs.classList.add("form--hidden");
+        dayGraph.classList.add("form--hidden");
         monthGraph.classList.add("form--hidden");
         yearGraph.classList.add("form--hidden");
         customGraph.classList.add("form--hidden");
-        dashboard.classList.add("form--hidden");
+        dashboard.classList.remove("form--hidden");
     });
     
     document.querySelector("#cancelButton").addEventListener("click", e => {
@@ -99,12 +99,12 @@ document.addEventListener("DOMContentLoaded", () => {
         loginForm.classList.add("form--hidden");
         createAccountForm.classList.add("form--hidden");
         settingsPage.classList.add("form--hidden");
-        graphs.classList.remove("form--hidden");
-        dayGraph.classList.remove("form--hidden");
+        graphs.classList.add("form--hidden");
+        dayGraph.classList.add("form--hidden");
         monthGraph.classList.add("form--hidden");
         yearGraph.classList.add("form--hidden");
         customGraph.classList.add("form--hidden");
-        dashboard.classList.add("form--hidden");
+        dashboard.classList.remove("form--hidden");
     });
         
     document.querySelector("#gotoGraph").addEventListener("click", e => {
@@ -186,6 +186,20 @@ document.addEventListener("DOMContentLoaded", () => {
         dashboard.classList.add("form--hidden");
     });
     
+    document.querySelector("#fishProfile").addEventListener("click", e => {
+        e.preventDefault();
+        loginForm.classList.remove("form--hidden");
+        createAccountForm.classList.add("form--hidden");
+        settingsPage.classList.add("form--hidden");
+        graphs.classList.add("form--hidden");
+        dayGraph.classList.add("form--hidden");
+        monthGraph.classList.add("form--hidden");
+        yearGraph.classList.add("form--hidden");
+        customGraph.classList.add("form--hidden");
+        dashboard.classList.add("form--hidden");
+    });
+    
+    
     document.querySelector("#gotoSettings").addEventListener("click", e => {
         e.preventDefault();
         loginForm.classList.add("form--hidden");
@@ -235,12 +249,12 @@ document.addEventListener("DOMContentLoaded", () => {
         loginForm.classList.add("form--hidden");
         createAccountForm.classList.add("form--hidden");
         settingsPage.classList.add("form--hidden");
-        graphs.classList.remove("form--hidden");
-        dayGraph.classList.remove("form--hidden");
+        graphs.classList.add("form--hidden");
+        dayGraph.classList.add("form--hidden");
         monthGraph.classList.add("form--hidden");
         yearGraph.classList.add("form--hidden");
         customGraph.classList.add("form--hidden");
-        dashboard.classList.add("form--hidden");
+        dashboard.classList.remove("form--hidden");
     });
 
     loginForm.addEventListener("submit", e => {
