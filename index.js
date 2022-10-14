@@ -446,7 +446,7 @@ console.log(dayChart.data);
 
 
 
-// ----------- Socket Stuff ----------- //
+/* // ----------- Socket Stuff ----------- //
 const startWebSocket = () => {
     socket = new WebSocket("ws://localhost:8080");
 
@@ -478,4 +478,4 @@ const startWebSocket = () => {
 };
 
 updateButton(CONNECT_ID, 'connecting...', true);
-startWebSocket();
+startWebSocket(); */
