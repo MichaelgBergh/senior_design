@@ -620,14 +620,17 @@ background: lightblue;
 
 .rightBox {
 position: relative;
-width: 30%;
+width: 5%;
 padding-left: 1%;
 top: -10%;
 left: 70%;
 padding-top: 2%;
 padding-bottom: 20%;
-background: lightblue;
+/* background: lightblue; */
 color: black;
+}
+.smallFish {
+size: 1%,1%;
 }
 
 .centerBox {
