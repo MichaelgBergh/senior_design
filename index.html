@@ -72,8 +72,8 @@ Send info to ESP32
   var Socket;
   document.getElementById('BTN_SEND_BACK').addEventListener('click', button_send_back);
   function init() {
-    Socket = new WebSocket('wss://' + '192.168.0.18' + ':81/');
-    console.log('wss://' + '192.168.0.18' + ':81/');
+    Socket = new WebSocket('ws://' + '192.168.0.18' + ':81/');
+    console.log('ws://' + '192.168.0.18' + ':81/');
     Socket.onmessage = function(event) {
       processCommand(event);
     };
