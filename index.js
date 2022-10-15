@@ -412,30 +412,28 @@ console.log(dayChart.data);
 
 
 
-
-
-
-
-
-/* // ----------- Socket Stuff ----------- //
+// ----------- Socket Stuff ----------- //
 const startWebSocket = () => {
-    socket = new WebSocket("ws://localhost:8080");
 
+
+
+/*     socket = new WebSocket("ws://localhost:8080");
+    
     socket.onopen = event => {
         updateButton(CONNECT_ID, 'disconnect');
         sendAlert('green', '[connected]: engaged');
     };
-
+    
     socket.onmessage = event => {
         [time, water] = event.data.split(':').map(x => parseInt(x));
-
+    
         // If chartjs can't keep up you can improve performance
         // https://www.chartjs.org/docs/latest/general/performance.html
         chart.data.labels.push(time);
         chart.data.datasets[0].data.push(water);
         if (!isPaused) chart.update();
     };
-
+    
     socket.onclose = event => {
         updateButton(CONNECT_ID, 'Connect');
         if (event.wasClean) {
@@ -444,9 +442,9 @@ const startWebSocket = () => {
             sendAlert('red', '[closed]: Connection failed');
         }
     };
-
-    socket.onerror = error => sendAlert('red', `[error]: ${error.message}`);
+    
+    socket.onerror = error => sendAlert('red', `[error]: ${error.message}`); */
 };
-
+/* 
 updateButton(CONNECT_ID, 'connecting...', true);
 startWebSocket(); */

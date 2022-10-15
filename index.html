@@ -64,7 +64,30 @@ document.querySelector("#writeToFileButton").addEventListener("click", e => {
     
   </head>
 
+<button type='button' id='BTN_SEND_BACK'>
+Send info to ESP32
+</button>
 
+<script>
+  var Socket;
+  document.getElementById('BTN_SEND_BACK').addEventListener('click', button_send_back);
+  function init() {
+    Socket = new WebSocket('wss://' + window.location.hostname + ':81/');
+    Socket.onmessage = function(event) {
+      processCommand(event);
+    };
+  }
+  function button_send_back() {
+    Socket.send('Sending back some random stuff');
+  }
+  function processCommand(event) {
+    document.getElementById('rand').innerHTML = event.data;
+    console.log(event.data);
+  }
+  window.onload = function(event) {
+    init();
+  }
+</script>
   
   
 <!--   
