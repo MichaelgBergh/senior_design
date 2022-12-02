@@ -1,109 +1,3 @@
-:root {
-  --red: #ffc9c9;
-  --green: #c2fdbc;
-  --blue: #b6e4fb;
-}
-
-* {
-  box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-body::-webkit-scrollbar {
-  width: 1em;
-}
-
-body::-webkit-scrollbar-track {
-  background-color: white;
-}
-
-body::-webkit-scrollbar-thumb {
-  background-color: darkgray;
-  border-radius: 1px;
-  border: 3px solid white;
-}
-
-body::-webkit-scrollbar-thumb:hover {
-  background-color: rgb(110, 110, 110);
-}
-
-button {
-  padding: .5rem .8rem;
-  font-size: 16px;
-  font-weight:  bold;
-  border: 0;
-  border-radius: 4px;
-}
-
-button:hover:enabled {
-  cursor: pointer;
-}
-
-body {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 2rem;
-}
-
-#buttons {
-  width: 100%;
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-end;
-  gap: 1rem;
-}
-
-#connect {
-  background: var(--blue);
-}
-
-#pause {
-  background: var(--blue);
-}
-
-#canvasContainer {
-  position: relative;
-  width: 100%;
-  max-width: 900px;
-  margin-bottom: 3rem;
-}
-
-#alerts {
-  display: flex;
-  flex-direction: column;
-  gap: .5rem;
-  width: 100%;
-  margin-top: 1rem;
-}
-
-#alerts > div {
-  padding: 1.5rem 2rem;
-  border-radius: 4px;
-  background: lightgray;
-  opacity: .5;
-}
-
-#alerts > div:first-child {
-  opacity: 1;
-}
-
-@media (max-width:500px) {
-  body {
-      margin: .5rem;
-  }
-
-  #canvasContainer {
-      margin-bottom: 2rem;
-  }
-
-  #alerts > div {
-      padding: 1rem;
-  }
-}
-
-
 body {
   --color-primary: #009579;
   --color-primary-dark: #007f67;
@@ -234,33 +128,6 @@ body {
 }
 
 
-
-
-
-.topButtons {
-position: absolute;
-top: 5px;
-right: 5px;
-
-}
-
-.graphButtons {
-font-size: 16px;
-padding: 8px;
-text-align: right;
-background-color: lightgrey;
-color: black;
-}
-
-.button {
-font-size: 18px;
-padding: 10px;
-background-color: skyblue;
-}
-
-
-
-
 .img-account-profile {
   height: 10rem;
 }
@@ -339,18 +206,6 @@ background-color: Green;
 .biggerGraph {
  width: 70%;
  }
-
-
-
-body{
-margin-top:20px;
-background-color:white;
-color:#69707a;
-}
-
-
-
-
 
 
 
@@ -659,4 +514,24 @@ border-radius: 8px;
 
 .graphDashboard:hover {
 box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+
+
+.graphResize{
+  width: 1229px;
+  height: 630px;
+}
+
+
+.makeSpaceBelow
+{
+  padding-bottom: 5%;
+}
+
+.backgroundBetter{
+  background: rgb(255, 255, 255);
+}
+
+.backgroundBetter2{
+  background: white
 }
